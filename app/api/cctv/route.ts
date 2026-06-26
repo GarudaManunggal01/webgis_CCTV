@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
 import { authenticateRequest } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
@@ -15,7 +15,7 @@ export async function GET() {
     console.error("Error fetching CCTV data:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -28,12 +28,12 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { name, latitude, longitude, streamUrl, status, thumbnail } = body;
+    const { name, latitude, longitude, streamurl, status, thumbnail } = body;
 
-    if (!name || !latitude || !longitude || !streamUrl) {
+    if (!name || !latitude || !longitude || !streamurl) {
       return NextResponse.json(
         { error: "Missing required fields" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
         slug,
         latitude: parseFloat(latitude),
         longitude: parseFloat(longitude),
-        streamUrl,
+        streamurl,
         status: status || "online",
         thumbnail,
       },
@@ -61,7 +61,7 @@ export async function POST(req: Request) {
     console.error("Create error:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/navigation";
 import type { CctvCamera, CctvStats } from "@/app/types";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 /* ─── helpers ──────────────────────────────────────────────────── */
 function slugify(name: string) {
@@ -20,7 +20,7 @@ const EMPTY_FORM = {
   name: "",
   latitude: "",
   longitude: "",
-  streamUrl: "",
+  streamurl: "",
   status: "online",
   thumbnail: "",
 };
@@ -162,7 +162,7 @@ export default function AdminPage() {
       name: cam.name,
       latitude: String(cam.latitude),
       longitude: String(cam.longitude),
-      streamUrl: cam.streamUrl,
+      streamurl: cam.streamurl,
       status: cam.status,
       thumbnail: cam.thumbnail ?? "",
     });
@@ -173,7 +173,7 @@ export default function AdminPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setFormError("");
-    if (!formData.name || !formData.latitude || !formData.longitude || !formData.streamUrl) {
+    if (!formData.name || !formData.latitude || !formData.longitude || !formData.streamurl) {
       setFormError("Nama, Latitude, Longitude, dan Stream URL wajib diisi.");
       return;
     }
@@ -1169,7 +1169,7 @@ export default function AdminPage() {
                           <div>{cam.latitude.toFixed(6)}</div>
                           <div>{cam.longitude.toFixed(6)}</div>
                         </td>
-                        <td className="td-url" title={cam.streamUrl}>{cam.streamUrl}</td>
+                        <td className="td-url" title={cam.streamurl}>{cam.streamurl}</td>
                         <td className="right">
                           <div className="ad-action-group">
                             <button className="ad-btn-icon ad-btn-edit" title="Edit" onClick={() => openEdit(cam)}>
@@ -1296,8 +1296,8 @@ export default function AdminPage() {
                     className="ad-form-input"
                     type="text"
                     placeholder="https://example.com/stream.m3u8"
-                    value={formData.streamUrl}
-                    onChange={e => setFormData(p => ({ ...p, streamUrl: e.target.value }))}
+                    value={formData.streamurl}
+                    onChange={e => setFormData(p => ({ ...p, streamurl: e.target.value }))}
                   />
                   <div className="ad-form-hint">Gunakan URL HLS (.m3u8) untuk streaming langsung</div>
                 </div>

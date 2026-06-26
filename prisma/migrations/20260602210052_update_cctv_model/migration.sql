@@ -13,13 +13,13 @@ CREATE TABLE "new_CCTV" (
     "name" TEXT NOT NULL,
     "latitude" REAL NOT NULL,
     "longitude" REAL NOT NULL,
-    "streamUrl" TEXT NOT NULL,
+    "streamurl" TEXT NOT NULL,
     "status" TEXT NOT NULL DEFAULT 'online',
     "thumbnail" TEXT,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
 );
-INSERT INTO "new_CCTV" ("createdAt", "id", "latitude", "longitude", "name", "status", "streamUrl", "updatedAt") SELECT "createdAt", "id", "latitude", "longitude", "name", "status", "streamUrl", "updatedAt" FROM "CCTV";
+INSERT INTO "new_CCTV" ("createdAt", "id", "latitude", "longitude", "name", "status", "streamurl", "updatedAt") SELECT "createdAt", "id", "latitude", "longitude", "name", "status", "streamurl", "updatedAt" FROM "CCTV";
 DROP TABLE "CCTV";
 ALTER TABLE "new_CCTV" RENAME TO "CCTV";
 CREATE UNIQUE INDEX "CCTV_slug_key" ON "CCTV"("slug");

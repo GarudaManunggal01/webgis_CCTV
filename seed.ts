@@ -1,11 +1,11 @@
+import { PrismaClient } from "@prisma/client";
 import "dotenv/config";
-import { PrismaClient } from '@prisma/client';
-import { CCTV_CAMERAS } from './app/data/cctv';
+import { CCTV_CAMERAS } from "./app/data/cctv";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('Starting seeding...');
+  console.log("Starting seeding...");
 
   for (const camera of CCTV_CAMERAS) {
     await prisma.cCTV.upsert({
@@ -14,7 +14,7 @@ async function main() {
         name: camera.name,
         latitude: camera.latitude,
         longitude: camera.longitude,
-        streamUrl: camera.streamUrl,
+        streamurl: camera.streamurl,
         status: camera.status,
       },
       create: {
@@ -22,14 +22,14 @@ async function main() {
         name: camera.name,
         latitude: camera.latitude,
         longitude: camera.longitude,
-        streamUrl: camera.streamUrl,
+        streamurl: camera.streamurl,
         status: camera.status,
       },
     });
     console.log(`Seeded ${camera.name}`);
   }
 
-  console.log('Seeding completed.');
+  console.log("Seeding completed.");
 }
 
 main()

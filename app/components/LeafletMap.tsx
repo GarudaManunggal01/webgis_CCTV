@@ -1,13 +1,13 @@
 "use client";
 
 import L from "leaflet";
-import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import MarkerClusterGroup from "react-leaflet-cluster";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-cluster";
 
-import HlsPlayer from "./hlsplayer";
 import type { CctvCamera } from "@/app/types";
+import HlsPlayer from "./hlsplayer";
 
 const cctvIcon = L.icon({
   iconUrl: "/icons/image-3042333_1280.png",
@@ -204,7 +204,7 @@ export default function LeafletMap() {
                   </p>
 
                   {camera.status === "online" ? (
-                    <HlsPlayer src={camera.streamUrl} />
+                    <HlsPlayer src={camera.streamurl} />
                   ) : (
                     <p className="text-sm italic text-gray-500">CCTV Offline</p>
                   )}

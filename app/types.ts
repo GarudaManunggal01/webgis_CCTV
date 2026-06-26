@@ -4,7 +4,7 @@ export interface CctvCamera {
   name: string;
   latitude: number;
   longitude: number;
-  streamUrl: string;
+  streamurl: string;
   status: string;
   thumbnail?: string | null;
   createdAt?: string;
@@ -21,7 +21,7 @@ export type CctvFormData = {
   name: string;
   latitude: string;
   longitude: string;
-  streamUrl: string;
+  streamurl: string;
   status: string;
   thumbnail: string;
 };
