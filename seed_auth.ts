@@ -1,5 +1,4 @@
 import "dotenv/config";
-process.env.DATABASE_URL = "file:./dev.db";
 
 async function main() {
   const { prisma } = await import('./lib/prisma');
